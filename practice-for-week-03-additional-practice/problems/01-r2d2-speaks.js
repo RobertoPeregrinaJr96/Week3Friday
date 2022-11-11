@@ -4,8 +4,8 @@
     
     let code = [0, 1, 1, 0];
     r2d2Speaks(code);
-        print 'beep'
-        pause for 400ms
+        print 'beep' .  // print 'beep'
+        pause for 400ms // setTimeout(anonFunc, 400)
         print 'boop'
         pause for 800ms
         print 'boop'
@@ -16,6 +16,24 @@
 
 function r2d2Speaks(code) {
     // Your code here
+    for (let i = 0; i < code.length; i++) {
+        const num = code[i];
+        //console.log(num)
+        if (num === 0) {
+            console.log("beep")
+            setTimeout(() => {
+            }, 400)
+        } else {
+            console.log("boop")
+            setTimeout(() => {
+            }, 800)
+        }
+
+    }
+    //console.log(num)
+
+
+
 }
 
 let code = [0, 1, 1, 0];
