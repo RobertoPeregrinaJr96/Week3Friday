@@ -13,6 +13,36 @@ The return function should return a copy of the input array with only elements o
 specified type. Note that the returned function only filters elements of one type,
 as opposed to the last problem which accepted any number of strings.
 
+
+Note: the mocha tests do not test that your solution is implemented recursively.
+However, for bonus points try to solve it both with recursion and iteration.
+*/
+
+function recursivePreserveType(array,arr = []) {
+    // Your code here
+    if(array[0]=== undefined) {
+        return arr
+    }
+    return function(...type){
+        if(typeof array[0] === type){
+            arr.push(array[0])
+        }
+        return recursivePreserveType(array.slice(1),arr)
+    }
+
+}
+//-------------------------------------
+//function recursivePreserveType(array) {
+//     return function copied(type, sliced = array.slice(), newArr = []) {
+//         if (sliced.length === 0) return newArr
+//         let shifted = sliced.shift()
+//         if (typeof shifted === type) newArr.push(shifted)
+
+//         copied(type, sliced, newArr)
+//         return newArr
+//     }
+// }
+//-------------------------------------------
 const preserveFunc = recursivePreserveType([1, 'one', 2, 'two', 3, 'three']);
 console.log(preserveFunc('number')); // prints [1, 2, 3]
 console.log(preserveFunc('string')); // prints ['one', 'two', 'three']
@@ -21,14 +51,6 @@ const preserveFunc2 = recursivePreserveType([2, undefined, 'world', { color: 're
 console.log(preserveFunc2('number')); // prints [2, 3]
 console.log(preserveFunc2('object')); // prints [ { color: 'red' }, [4, 5] ]
 console.log(preserveFunc2('boolean')); // prints [ true, false ]
-
-Note: the mocha tests do not test that your solution is implemented recursively.
-However, for bonus points try to solve it both with recursion and iteration.
-*/
-
-function recursivePreserveType(array) {
-    // Your code here
-}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
