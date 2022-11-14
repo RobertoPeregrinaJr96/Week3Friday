@@ -18,30 +18,22 @@ Note: the mocha tests do not test that your solution is implemented recursively.
 However, for bonus points try to solve it both with recursion and iteration.
 */
 
-function recursivePreserveType(array,arr = []) {
-    // Your code here
-    if(array[0]=== undefined) {
-        return arr
-    }
-    return function(...type){
-        if(typeof array[0] === type){
-            arr.push(array[0])
-        }
-        return recursivePreserveType(array.slice(1),arr)
-    }
+// function recursivePreserveType(array, arr = []) {
+//     // Your code here
 
-}
-//-------------------------------------
-//function recursivePreserveType(array) {
-//     return function copied(type, sliced = array.slice(), newArr = []) {
-//         if (sliced.length === 0) return newArr
-//         let shifted = sliced.shift()
-//         if (typeof shifted === type) newArr.push(shifted)
-
-//         copied(type, sliced, newArr)
-//         return newArr
-//     }
 // }
+//----------------mocha passed-------------
+function recursivePreserveType(array) {
+
+    return function rPT(type, sliced = array.slice(), newArr = []) {
+        if (sliced.length === 0) return newArr
+        let shifted = sliced.shift()
+        if (typeof shifted === type) newArr.push(shifted)
+
+        rPT(type, sliced, newArr)
+        return newArr
+    }
+}
 //-------------------------------------------
 const preserveFunc = recursivePreserveType([1, 'one', 2, 'two', 3, 'three']);
 console.log(preserveFunc('number')); // prints [1, 2, 3]

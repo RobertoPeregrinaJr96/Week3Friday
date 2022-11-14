@@ -11,42 +11,46 @@
 
 */
 
+//-------------- does not pass the last test, 2/3 passed
 function dynamicSlice(start, end, arr = []) {
-  // edge case for when start is lower then 0
   if (start < 0) {
     start = 0
   }
-
-  // base case for when start is equal to end
   if (start === end) {
     return arr
   }
-  // closure that contains the list array
   return function dS(list) {
-   console.log(list)
-    // edge case if the end is greater then the amount of idicies in the list(array)
-    if(end > list.length - 1) {
-      end = list.length - 1
-      console.log(end)
+    if (end > list.length) {
+      end = list.length
     }
-    for(let i = start; i <= end; i++) {
-
-      //push's the list(array) at the index(start)
-      arr.push(list[start])
-
+    for (let i = start; i < end; i++) {
+      let item = list[i]
+      arr.push(item)
     }
     return arr
   }
 }
-
-// const slicer = dynamicSlice(1, 3);
-// console.log(slicer([0, 1, 2, 3])); // prints [ 1, 2 ]
+//---------------------------- mocha passed
+// function dynamicSlice(start, end) {
+//   return function (arr) {
+//     let newArr = []
+//       for (let i = 0; i < arr.length; i++) {
+//             let el = arr[i]
+//             if ((i >= start && i < end)) {
+//               newArr.push(el)
+//             }
+//       }
+//       return newArr
+//   }
+// }
+const slicer = dynamicSlice(1, 3);
+console.log(slicer([0, 1, 2, 3])); // prints [ 1, 2 ]
 
 const slicer2 = dynamicSlice(2, 7);
 console.log(slicer2(['kittens', 'puppies', 'cats', 'dogs'])); // prints [ 'cats', 'dogs' ]
 
-const slicer3 = dynamicSlice(-10, 2);
-console.log(slicer3([99, 40, 131, 8])); // prints [ 99, 40 ]
+// const slicer3 = dynamicSlice(-10, 2);
+// console.log(slicer3([99, 40, 131, 8])); // prints [ 99, 40 ]
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
   module.exports = dynamicSlice;

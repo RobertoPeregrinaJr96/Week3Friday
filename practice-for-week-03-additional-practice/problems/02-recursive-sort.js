@@ -4,44 +4,43 @@
     Given an array of numbers, write a function that returns a new array of numbers sorted from lowest to highest.
 
 
-    function sort(nums) {
-    let arr = []
-    nums.sort((a,b) => { return a - b}).map((num) => {
-        arr.push(num)
-    })
-    return arr
 }
-  
-  
-   
 */
-
-// function sort(nums,arr = []) {
-//     nums.sort((a, b) => {
-//         return a - b
-//     })
-//     if (nums.length === 0) {
-//         return arr
-//     } else {
-//         arr.push(nums[0])
-//     }
-// return sort(nums.slice(1),arr)
-// }
-//------------------------------------------------------
-function sort(nums) {
-    let arr = []
-    let sarr = nums.sort((a,b) => {return a - b})
-    function p(sarr){
-        if(sarr[0] === undefined) {
-            return arr
-        } else {
-            arr.push(sarr[0])
-            return p(sarr.slice(1))
-        }
+//----------------- mocha passed
+function sort(nums,arr = []) {
+    nums.sort((a, b) => {
+        return a - b
+    })
+    if (nums.length === 0) {
+        return arr
+    } else {
+        arr.push(nums[0])
     }
-    p(nums)
-    return arr
+return sort(nums.slice(1),arr)
 }
+//----------------mocha passed----------------------
+// function sort(nums) {
+//     let arr = []
+//     nums.sort((a, b) => { return a - b }).map((num) => {
+//         arr.push(num)
+//     })
+//     return arr
+// }
+//----------------------mocha passed-------------------
+// function sort(nums) {
+//     let arr = []
+//     let sarr = nums.sort((a,b) => {return a - b})
+//     function p(sarr){
+//         if(sarr[0] === undefined) {
+//             return arr
+//         } else {
+//             arr.push(sarr[0])
+//             return p(sarr.slice(1))
+//         }
+//     }
+//     p(nums)
+//     return arr
+// }
 //------------------------------------------------------
 console.log(sort([])) // prints []
 console.log(sort([9])) // prints [9]

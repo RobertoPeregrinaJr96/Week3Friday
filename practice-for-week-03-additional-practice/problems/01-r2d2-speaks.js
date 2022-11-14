@@ -34,17 +34,15 @@ function r2d2Speaks(code) {
 // function r2d2Speaks(code) {
 //     if (code.length === 0) return
 
-//     let beeper = code.shift()
-//     if (beeper === 0) {
+//     let beep = code.shift()
+//     if (beep === 0) {
 //         console.log('beep')
 //     setTimeout (() => {
-
 //         r2d2Speaks(code)
 //     }, 400)
 //     } else {
 //         console.log('boop')
 //         setTimeout (() => {
-
 //             r2d2Speaks(code)
 //         }, 800)
 //     }
